@@ -1,0 +1,92 @@
+[project]
+name = "timescaledb-sqlalchemy-fastapi-multitenancy-demo"
+version = "0.1.0"
+description = "Demo of TimescaleDB, SQLAlchemy, FastAPI, and Multitenancy"
+authors = [
+    {name = "Vladyslav Fedoriuk", email="vlad.fedoriuk2000@gmail.com"}
+]
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "alembic",
+    "asyncpg",
+    "fastapi[all]",
+    "sqlalchemy[asyncio]",
+]
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ipython",
+    "pip-tools",
+    "pre-commit",
+    "pyproject-fmt",
+    "ruff",
+    "types-aiofiles",
+]
+
+[tool.setuptools]
+py-modules = ["app"]
+
+[tool.black]
+line-length = 88
+target_version = ['py312']
+include = '\.pyi?$'
+force-exclude = '''
+(
+  /(
+     \.bzr
+    | \.direnv
+    | \.eggs
+    | \.git
+    | \.git-rewrite
+    | \.hg
+    | \.mypy_cache
+    | \.ruff_cache
+    | \.tox
+    | \.nox
+    | \.pants.d
+    | \.pytype
+    | \.venv
+    | \.svn
+    | \.ipynb_checkpoints
+    | \.egg-info
+    | __pypackages__
+    | _build
+    | buck-out
+    | build
+    | dist
+    | node_modules
+    | venv
+  )/
+)
+''' # To comply with ruff config
+
+[tool.ruff]
+line-length = 88
+target-version = 'py312'
+required-version = "0.1.5"
+extend-select = [
+    "D", # pydocstyle
+    "W", # pycodestyle
+    "C90", # mccabe
+    "I", # isort
+    "UP", # pyupgrade
+    "ASYNC", # flake8-async
+    "S", # flake8-bandit
+    "B", # flake8-bugbear
+    "ANN", # flake8-annotations
+    "S", # flake8-bandit
+    "C4", # flake8-comprehensions
+    "T10", # flake8-debugger
+    "INP", # flake8-no-pep420
+    "PT", # flake8-pytest-style
+    "TID", # flake8-tidy-imports
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate
+    "Q", # flake8-quotes
+]
+[tool.ruff.pydocstyle]
+convention = "numpy"
