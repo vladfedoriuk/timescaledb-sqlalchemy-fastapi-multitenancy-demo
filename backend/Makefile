@@ -27,6 +27,7 @@ help: # Show this help
 	@echo "  reinit-dev         Reinstall pre-commit hooks and dev dependencies"
 	@echo "  lint               Run linters"
 	@echo "  run                Run the app"
+	@echo "  get-host-ip        Get the host IP address"
 
 requirements-base: # Compile base requirements
 	python -m piptools compile \
@@ -73,5 +74,8 @@ run: # Run the app
 	uvicorn main:app --reload --host 0.0.0.0 --port 8000
 .PHONY: run
 
+get-host-ip: # Get the host IP address
+	@python -c "import socket; print(socket.gethostbyname(socket.gethostname()))"
+.PHONY: get-host-ip
 
 .DEFAULT_GOAL := init-dev # Set the default goal to init-dev
