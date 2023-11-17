@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       setCurrentUser(user);
     });
     return unsubscribe;
-  }, [setCurrentUser]);
+  }, [auth, setCurrentUser]);
 
   return (
     <AuthContext.Provider
