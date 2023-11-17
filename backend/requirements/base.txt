@@ -16,26 +16,85 @@ anyio==3.7.1
     #   watchfiles
 asyncpg==0.29.0
     # via timescaledb-sqlalchemy-fastapi-multitenancy-demo (pyproject.toml)
+cachecontrol==0.13.1
+    # via firebase-admin
+cachetools==5.3.2
+    # via google-auth
 certifi==2023.7.22
     # via
     #   httpcore
     #   httpx
+    #   requests
+cffi==1.16.0
+    # via cryptography
+charset-normalizer==3.3.2
+    # via requests
 click==8.1.7
     # via uvicorn
+cryptography==41.0.5
+    # via pyjwt
 dnspython==2.4.2
     # via email-validator
 email-validator==2.1.0.post1
     # via fastapi
 fastapi[all]==0.104.1
     # via timescaledb-sqlalchemy-fastapi-multitenancy-demo (pyproject.toml)
+firebase-admin==6.2.0
+    # via timescaledb-sqlalchemy-fastapi-multitenancy-demo (pyproject.toml)
+google-api-core[grpc]==2.14.0
+    # via
+    #   firebase-admin
+    #   google-api-python-client
+    #   google-cloud-core
+    #   google-cloud-firestore
+    #   google-cloud-storage
+google-api-python-client==2.108.0
+    # via firebase-admin
+google-auth==2.23.4
+    # via
+    #   google-api-core
+    #   google-api-python-client
+    #   google-auth-httplib2
+    #   google-cloud-core
+    #   google-cloud-storage
+google-auth-httplib2==0.1.1
+    # via google-api-python-client
+google-cloud-core==2.3.3
+    # via
+    #   google-cloud-firestore
+    #   google-cloud-storage
+google-cloud-firestore==2.13.1
+    # via firebase-admin
+google-cloud-storage==2.13.0
+    # via firebase-admin
+google-crc32c==1.5.0
+    # via
+    #   google-cloud-storage
+    #   google-resumable-media
+google-resumable-media==2.6.0
+    # via google-cloud-storage
+googleapis-common-protos==1.61.0
+    # via
+    #   google-api-core
+    #   grpcio-status
 greenlet==3.0.1
     # via sqlalchemy
+grpcio==1.59.2
+    # via
+    #   google-api-core
+    #   grpcio-status
+grpcio-status==1.59.2
+    # via google-api-core
 h11==0.14.0
     # via
     #   httpcore
     #   uvicorn
 httpcore==1.0.2
     # via httpx
+httplib2==0.22.0
+    # via
+    #   google-api-python-client
+    #   google-auth-httplib2
 httptools==0.6.1
     # via uvicorn
 httpx==0.25.1
@@ -45,6 +104,7 @@ idna==3.4
     #   anyio
     #   email-validator
     #   httpx
+    #   requests
 itsdangerous==2.1.2
     # via fastapi
 jinja2==3.1.2
@@ -55,8 +115,27 @@ markupsafe==2.1.3
     # via
     #   jinja2
     #   mako
+msgpack==1.0.7
+    # via cachecontrol
 orjson==3.9.10
     # via fastapi
+proto-plus==1.22.3
+    # via google-cloud-firestore
+protobuf==4.25.1
+    # via
+    #   google-api-core
+    #   google-cloud-firestore
+    #   googleapis-common-protos
+    #   grpcio-status
+    #   proto-plus
+pyasn1==0.5.0
+    # via
+    #   pyasn1-modules
+    #   rsa
+pyasn1-modules==0.3.0
+    # via google-auth
+pycparser==2.21
+    # via cffi
 pydantic==2.5.1
     # via
     #   fastapi
@@ -68,6 +147,10 @@ pydantic-extra-types==2.1.0
     # via fastapi
 pydantic-settings==2.1.0
     # via fastapi
+pyjwt[crypto]==2.8.0
+    # via firebase-admin
+pyparsing==3.1.1
+    # via httplib2
 python-dotenv==1.0.0
     # via
     #   pydantic-settings
@@ -78,6 +161,13 @@ pyyaml==6.0.1
     # via
     #   fastapi
     #   uvicorn
+requests==2.31.0
+    # via
+    #   cachecontrol
+    #   google-api-core
+    #   google-cloud-storage
+rsa==4.9
+    # via google-auth
 sniffio==1.3.0
     # via
     #   anyio
@@ -97,6 +187,10 @@ typing-extensions==4.8.0
     #   sqlalchemy
 ujson==5.8.0
     # via fastapi
+uritemplate==4.1.1
+    # via google-api-python-client
+urllib3==2.1.0
+    # via requests
 uvicorn[standard]==0.24.0.post1
     # via fastapi
 uvloop==0.19.0

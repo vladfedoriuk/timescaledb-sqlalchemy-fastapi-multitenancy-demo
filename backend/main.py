@@ -3,11 +3,23 @@ The main file of the backend.
 
 It contains the FastAPI application.
 """
+from pathlib import Path
+from typing import Final
+
+import firebase_admin
 from fastapi import FastAPI, Request, Response
+from firebase_admin import credentials
 
 from dto.sensors_data import TestPayload
 
 app = FastAPI()
+
+FIREBASE_CREDENTIALS_PATH: Final[Path] = (
+    Path(__file__).parent / "firebase-adminsdk.json"
+)
+
+cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
+firebase_admin.initialize_app(cred)
 
 
 @app.get("/")
