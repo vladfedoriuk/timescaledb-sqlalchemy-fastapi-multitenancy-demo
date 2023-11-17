@@ -22,6 +22,17 @@ cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
 firebase_admin.initialize_app(cred)
 
 
+def get_access_token_from_header(authorization_header: str) -> str:
+    """
+    Return the Access Token from Firebase.
+
+    :param authorization_header: The Authorization header
+    :return: The Access token from Firebase
+    """
+    _, token = authorization_header.rsplit(" ", 1)
+    return token
+
+
 def retrieve_uid(token: str) -> str:
     """
     Retrieve the uid from the given token.
@@ -40,8 +51,12 @@ async def root() -> dict[str, str]:
 
 
 @app.post("/sensors-data")
-async def sensors_data(request: Request) -> Response:
+async def sensors_data(
+    request: Request, authorization: Annotated[str, Header()]
+) -> Response:
     """Ingest sensors data."""
+    uid = retrieve_uid(get_access_token_from_header(authorization))
+    print(uid)
     if request.headers.get("content-type") != "application/json":
         print("Invalid content-type")
         return Response(status_code=499)
@@ -55,6 +70,5 @@ async def sensors_data_test(
 ) -> Response:
     """Ingest sensors data."""
     print(payload)
-    _, token = authorization.rsplit(" ", 1)
-    print(retrieve_uid(token))
+    print(retrieve_uid(get_access_token_from_header(authorization)))
     return Response(status_code=200)
