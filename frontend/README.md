@@ -54,3 +54,6 @@ pnpm install
 ```shell
 pnpm run dev
 ```
+
+## Registering the application in Firebase
+- https://firebase.google.com/docs/web/setup#register-app
