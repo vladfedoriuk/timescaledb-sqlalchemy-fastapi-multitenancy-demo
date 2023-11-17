@@ -1,11 +1,13 @@
-import { Card, Text, Metric } from "@tremor/react";
+import { Flex } from "@tremor/react";
+import { IdTokenInfo } from "./IdTokenInfo";
 
 function App() {
   return (
-    <Card className="max-w-xs mx-auto">
-      <Text>Sales</Text>
-      <Metric>$ 34,743</Metric>
-    </Card>
+    <Flex>
+      <Flex className="m-auto">
+        <IdTokenInfo />
+      </Flex>
+    </Flex>
   );
 }
 

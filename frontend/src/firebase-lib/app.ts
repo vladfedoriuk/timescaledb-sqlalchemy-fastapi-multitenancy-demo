@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-
+// Unlike how API keys are typically used, API keys for Firebase services are not used to control access to backend resources;
+// https://firebase.google.com/docs/projects/api-keys#api-keys-for-firebase-are-different
 export const firebaseConfig = {
   apiKey: "AIzaSyBmq1OKSa8vK3v5Eb99rJFeAw6XBHmlftw",
   authDomain: "sqlalchemy-multi-tenancy-demo.firebaseapp.com",
