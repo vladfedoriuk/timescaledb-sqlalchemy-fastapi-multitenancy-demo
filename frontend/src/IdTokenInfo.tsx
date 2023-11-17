@@ -9,6 +9,7 @@ import {
   Card,
   Subtitle,
   Text,
+  Title,
 } from "@tremor/react";
 import { ExclamationIcon } from "@heroicons/react/solid";
 
@@ -41,7 +42,7 @@ export const IdTokenInfo = () => {
   }
   return (
     <Card className="max-w-lg space-y-4">
-      <Text>ID token</Text>
+      <Title>ID token</Title>
       <Subtitle className="mb-4">
         Copy this token to use in the{" "}
         <Bold className="text-sm">Authorization</Bold> header of the{" "}

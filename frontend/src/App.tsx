@@ -3,11 +3,13 @@ import { IdTokenInfo } from "./IdTokenInfo";
 
 function App() {
   return (
-    <Flex>
-      <Flex className="m-auto">
-        <IdTokenInfo />
+    <section className="container mx-auto">
+      <Flex>
+        <Flex className="m-auto">
+          <IdTokenInfo />
+        </Flex>
       </Flex>
-    </Flex>
+    </section>
   );
 }
 
