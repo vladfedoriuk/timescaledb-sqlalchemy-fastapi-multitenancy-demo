@@ -1,12 +1,12 @@
 import { Flex } from "@tremor/react";
-import { IdTokenInfo } from "./IdTokenInfo";
+import { AccessTokenInfo } from "./AccessTokenInfo";
 
 function App() {
   return (
     <section className="container mx-auto">
       <Flex>
         <Flex className="m-auto">
-          <IdTokenInfo />
+          <AccessTokenInfo />
         </Flex>
       </Flex>
     </section>

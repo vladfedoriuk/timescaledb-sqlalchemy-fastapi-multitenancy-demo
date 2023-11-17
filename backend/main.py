@@ -4,10 +4,10 @@ The main file of the backend.
 It contains the FastAPI application.
 """
 from pathlib import Path
-from typing import Final
+from typing import Annotated, Final
 
-import firebase_admin
-from fastapi import FastAPI, Request, Response
+import firebase_admin.auth
+from fastapi import FastAPI, Header, Request, Response
 from firebase_admin import credentials
 
 from dto.sensors_data import TestPayload
@@ -20,6 +20,17 @@ FIREBASE_CREDENTIALS_PATH: Final[Path] = (
 
 cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
 firebase_admin.initialize_app(cred)
+
+
+def retrieve_uid(token: str) -> str:
+    """
+    Retrieve the uid from the given token.
+
+    :param token: The access token to verify
+    :return: The uid of the user
+    """
+    decoded_token = firebase_admin.auth.verify_id_token(token)
+    return decoded_token["uid"]
 
 
 @app.get("/")
@@ -39,7 +50,11 @@ async def sensors_data(request: Request) -> Response:
 
 
 @app.post("/sensors-data-test")
-async def sensors_data_test(payload: TestPayload) -> Response:
+async def sensors_data_test(
+    payload: TestPayload, authorization: Annotated[str, Header()]
+) -> Response:
     """Ingest sensors data."""
     print(payload)
+    _, token = authorization.rsplit(" ", 1)
+    print(retrieve_uid(token))
     return Response(status_code=200)

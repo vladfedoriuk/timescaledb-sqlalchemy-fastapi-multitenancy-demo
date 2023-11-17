@@ -13,13 +13,13 @@ import {
 } from "@tremor/react";
 import { ExclamationIcon } from "@heroicons/react/solid";
 
-export const IdTokenInfo = () => {
+export const AccessTokenInfo = () => {
   const { currentUser } = useCurrentUser();
   const [idToken, setIdToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     if (currentUser) {
-      currentUser.getIdToken(true).then(setIdToken).catch(setError);
+      currentUser.getIdToken(false).then(setIdToken).catch(setError);
     }
   }, [currentUser]);
   if (error) {
@@ -42,7 +42,7 @@ export const IdTokenInfo = () => {
   }
   return (
     <Card className="max-w-lg space-y-4">
-      <Title>ID token</Title>
+      <Title>Access token</Title>
       <Subtitle className="mb-4">
         Copy this token to use in the{" "}
         <Bold className="text-sm">Authorization</Bold> header of the{" "}
