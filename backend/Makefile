@@ -26,6 +26,7 @@ help: # Show this help
 	@echo "  init-dev           Install the app locally with dev dependencies. Also install pre-commit hooks."
 	@echo "  reinit-dev         Reinstall pre-commit hooks and dev dependencies"
 	@echo "  lint               Run linters"
+	@echo "  run                Run the app"
 
 requirements-base: # Compile base requirements
 	python -m piptools compile \
@@ -67,6 +68,10 @@ reinit-dev: init-dev # Reinstall the app locally with dev dependencies. Also rei
 lint: # Run linters
 	pre-commit run --all-files
 .PHONY: lint
+
+run: # Run the app
+	uvicorn main:app --reload --host 0.0.0.0 --port 8000
+.PHONY: run
 
 
 .DEFAULT_GOAL := init-dev # Set the default goal to init-dev
